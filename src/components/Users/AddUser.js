@@ -3,14 +3,14 @@ import React, { useState, useRef } from 'react';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import ErrorModal from '../UI/ErrorModal';
-import classes from './AddUser.module.css';
 import Wrapper from '../Helpers/Wrapper';
+import classes from './AddUser.module.css';
 
 const AddUser = (props) => {
- const nameInputRef = useRef();
- const ageInputRef = useRef();
-//ako cemo samo da citamo value koristimo useRef
- const [error, setError] = useState();
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
+  const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
@@ -48,21 +48,12 @@ const AddUser = (props) => {
           onConfirm={errorHandler}
         />
       )}
-      {/* refs je uncontrolled component a prosli nacin sa state je controlled */}
       <Card className={classes.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            type="text"
-            ref={nameInputRef}
-          />
+          <input id="username" type="text" ref={nameInputRef} />
           <label htmlFor="age">Age (Years)</label>
-          <input
-            id="age"
-            type="number"
-            ref={ageInputRef}
-          />
+          <input id="age" type="number" ref={ageInputRef} />
           <Button type="submit">Add User</Button>
         </form>
       </Card>
